@@ -7,6 +7,9 @@ from sklearn.metrics import f1_score
 from tqdm.notebook import tqdm
 
 def test_classic(net, val_loader, device):
+    """
+    Test network on val data
+    """
     net.eval()
     with torch.no_grad():
 

@@ -6,13 +6,33 @@ import numpy as np
 
 def classic_train(net, freq, device, loss_fn, optimizer, 
                   train_loader, val_loader, num_epoch, NUM_TEST, NAME_TEST, begin=0):
+    """
+    Train network
+    
+    Args:
+    -- net: PyTorch model
+    -- freq: frequency of validation 
+    (e.g. freq = 100 means every 100 iterations it will validate)
+    -- device: 'cuda' or 'cpu'
+    -- loss_fn: function that calculate loss function
+    -- optimizer: optimizer from torch.nn.optim\
+    -- train_loader: torch.utils.data.DataLoader with train data
+    -- val_loader: torch.utils.data.DataLoader with validation data
+    -- num_epoch: how many epochs should it train
+    Args for save weigths:
+    -- NUM_TEST: number of attempt in experimenat
+    -- NAME_TEST: name of experiment
+    -- begin: from which epoch begin training
+    
+    Out: history of each epoch: train loss, val loss, accuracy, f1 score
+    """
     train_losses = []
     val_losses = []
     f1 = []
     accuracy = []
        
     
-    itr = 0  # счетчик итераций
+    itr = 0  
     for i in range(num_epoch):  
         epoch = i + begin
         print('-- EPOCH', epoch, '---------------------')
@@ -76,6 +96,9 @@ def classic_train(net, freq, device, loss_fn, optimizer,
 
 def alphaseg_train(net, segnet, freq, device, loss_fn, optimizer, 
                        train_loader, val_loader, num_epoch, NUM_TEST, NAME_TEST, begin=0):
+    """
+    In development
+    """
     train_losses = []
     val_losses = []
     f1 = []
